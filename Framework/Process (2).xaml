@@ -1,0 +1,1161 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>788,2653.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="58">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="601.6,2588" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="expectedFileName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="539.6,143.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.Item(&quot;Dashboard name&quot;).ToString.ToUpper.Trim]" sap:VirtualizedContainerService.HintSize="539.6,2262" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence x:Key="AAE" sap:VirtualizedContainerService.HintSize="496,1694" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="actualFileName" />
+          <Variable x:TypeArguments="sd:DataRow" Name="testDataRow" />
+          <Variable x:TypeArguments="sd:DataTable" Name="pwdDt" />
+          <Variable x:TypeArguments="sd:DataRow" Name="pwdRow" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Downloading File From Sharepoint workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="DownloadingFromSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SharepointURL">[in_Config("DownloadInputFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFileTemplate">[in_Config("AAEInputTemplateName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InputfileName">[expectedFileName]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTestData workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="GetTestData.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_inputFileName">[expectedFileName]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_testDataRow">[testDataRow]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="pwdDt">[pwdDt]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_pwdRow">[pwdRow]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to login workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="AAE\User is able to login.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_MAP_URL">[in_Config("MAPURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Username">[pwdRow.Item(1).ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Password">[pwdRow.Item(2).ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NavigateToDashboard workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="NavigateToDashboard.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_dashboardName">Actor Activity Explorer</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NoDataOnSummaryPage workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="AAE\NoDataOnSummaryPage.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SaveFilter workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="AAE\SaveFilter.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_UserFilter">[in_Config("FilterName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch - Run Report" sap:VirtualizedContainerService.HintSize="434,350.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence sap:VirtualizedContainerService.HintSize="400,533.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AAE_RunReport workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="AAE\AAE_RunReport.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_startDate">[testDataRow.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndDate">[testDataRow.Item(2).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RequestID">[testDataRow.Item(3).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Symbol">[testDataRow.Item(4).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_brokerID">[testDataRow.Item(5).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bpo">[testDataRow.Item(6).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_spo">[testDataRow.Item(7).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_accID">[testDataRow.Item(8).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_accType">[testDataRow.Item(9).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_rrcode" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_lastname" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_grpsearch" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_insiderfuzzymatch" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_security" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sandbox" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_showCancelledTrades" />
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadReport workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="DownloadReport.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_DashboradName">[in_TransactionItem.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Data Comparison workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="AAE\Data Comparison.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ActualFile">[in_Config("DefaultDownloadPath").ToString+ actualFileName]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExpectedFile">[expectedFileName]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,184.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteTestResult workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="WriteTestResult.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TestCaseID">R_AAEX-008</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_exception">["Execution Error : "+exception.Message]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogoutUser workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="LogoutUser.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadToSharepoint workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_63" UnSafe="False" WorkflowFileName="UploadToSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Sharepoint_TestResult">[in_Config("UploadFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_FileName">[expectedFileName]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <Sequence x:Key="CUBE" sap:VirtualizedContainerService.HintSize="496,1386" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="actualFileName" />
+          <Variable x:TypeArguments="sd:DataRow" Name="testDataRow" />
+          <Variable x:TypeArguments="sd:DataTable" Name="pwdDt" />
+          <Variable x:TypeArguments="sd:DataRow" Name="pwdRow" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Downloading File From Sharepoint workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="DownloadingFromSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SharepointURL">[in_Config("DownloadInputFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFileTemplate">[in_Config("CUBEInputTemplateName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InputfileName">[expectedFileName]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTestData workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="GetTestData.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_inputFileName">[expectedFileName]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_testDataRow">[testDataRow]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="pwdDt">[pwdDt]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_pwdRow">[pwdRow]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to login workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="CUBE\User is able to login.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_MAP_URL">[in_Config("MAPURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Username">[pwdRow.Item(1).ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Password">[pwdRow.Item(2).ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NavigateToDashboard workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="NavigateToDashboard.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_dashboardName">CUBE Report</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SaveFilter workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="CUBE\SaveFilter.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_UserFilter">[in_Config("FilterName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch - Run Report" sap:VirtualizedContainerService.HintSize="434,350.8" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence sap:VirtualizedContainerService.HintSize="400,533.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AAE_RunReport workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="CUBE\CUBE_RunReport.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_startDate">[testDataRow.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndDate">[testDataRow.Item(2).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_security">[testDataRow.Item(5).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartTime">[testDataRow.Item(3).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndTime">[testDataRow.Item(4).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_side">[testDataRow.Item(16).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_cusip">[testDataRow.Item(6).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_mkt">[testDataRow.Item(7).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_eventType">[testDataRow.Item(8).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_event">[testDataRow.Item(9).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bs_po">[testDataRow.Item(10).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bs_userid">[testDataRow.Item(11).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bs_an">[testDataRow.Item(13).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_activepassive">[testDataRow.Item(14).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_regid">[testDataRow.Item(15).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_custAcc">[testDataRow.Item(17).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_algoid">[testDataRow.Item(18).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_customer_lei">[testDataRow.Item(19).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_dealer_lei">[testDataRow.Item(20).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bs_accID">[testDataRow.Item(12).ToString]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadReport workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="DownloadReport.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_DashboradName">[in_TransactionItem.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Data Comparison workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="CUBE\Data Comparison.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ActualFile">[in_Config("DefaultDownloadPath").ToString+ actualFileName]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExpectedFile">[expectedFileName]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,184.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteTestResult workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="WriteTestResult.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TestCaseID">R_CUBE-008</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_exception">["Execution Error :" +exception.Message]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadToSharepoint workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_64" UnSafe="False" WorkflowFileName="UploadToSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Sharepoint_TestResult">[in_Config("UploadFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_FileName">[expectedFileName]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <Sequence x:Key="SAE" sap:VirtualizedContainerService.HintSize="499.6,2155.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="pwdDt" />
+          <Variable x:TypeArguments="sd:DataRow" Name="testDataRow" />
+          <Variable x:TypeArguments="sd:DataRow" Name="pwdRow" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Downloading File From Sharepoint workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_42" UnSafe="False" WorkflowFileName="DownloadingFromSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SharepointURL">[in_Config("DownloadInputFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFileTemplate">[in_Config("SAEInputTemplateName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InputfileName">[expectedFileName]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTestData workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_43" UnSafe="False" WorkflowFileName="GetTestData.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_inputFileName">[expectedFileName]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_testDataRow">[testDataRow]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="pwdDt">[pwdDt]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_pwdRow">[pwdRow]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to login workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="MAP_SAE\User is able to login.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_MAP_URL">[in_Config("MAPURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Username">[pwdRow.item(1).ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Password">[pwdRow.item(2).ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NavigateToDashboard workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_62" UnSafe="False" WorkflowFileName="NavigateToDashboard.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_dashboardName">Security Activity Explorer</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SaveFilter (1) workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="MAP_SAE\SaveFilter (1).xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_UserFilter">[in_Config("FilterName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="437.6,350.8" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence sap:VirtualizedContainerService.HintSize="400,626.4" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="actualFileName" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SAE(Autosaved) workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="MAP_SAE\SAE(Autosaved).xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_startDate">[testDataRow.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndDate">[testDataRow.Item(2).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartTime">[testDataRow.Item(3).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_security">[testDataRow.Item(5).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EventType">[testDataRow.Item(7).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Event">[testDataRow.Item(8).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_breg_id">[testDataRow.Item(28).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_mkt">[testDataRow.Item(6).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bpo">[testDataRow.Item(9).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_spo">[testDataRow.Item(10).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bdealerlei">[testDataRow.Item(11).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sdealerlei">[testDataRow.Item(12).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sRegID">[testDataRow.Item(29).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ban">[testDataRow.Item(24).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_san">[testDataRow.Item(25).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bActivePassive">[testDataRow.Item(26).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sActivepassive">[testDataRow.Item(27).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bTerms">[testDataRow.Item(30).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sTerms">[testDataRow.Item(31).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bCustomer_lei">[testDataRow.Item(14).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bCustomer_Account">[testDataRow.Item(15).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bAlgoid">[testDataRow.Item(16).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sUserID">[testDataRow.Item(17).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bAccountID">[testDataRow.Item(18).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sAccountID">[testDataRow.Item(19).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sCustomer_lei">[testDataRow.Item(20).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sCustomer_Account">[testDataRow.Item(21).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sAlgoid">[testDataRow.Item(22).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CUSIP">[testDataRow.Item(23).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_PlusMinusAll">[testDataRow.Item(32).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_buySellName">[testDataRow.Item(33).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Sandbox_Fields">[testDataRow.Item(34).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bUser_ID">[testDataRow.Item(13).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndTime">[testDataRow.item(4).ToString]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to run report workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="MAP_SAE\User is able to run report.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.2" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,225.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadReport workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_67" UnSafe="False" WorkflowFileName="DownloadReport.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_DashboradName">[in_TransactionItem.Item(1).ToString]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Data Comparison workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_48" UnSafe="False" WorkflowFileName="MAP_SAE\Data Comparison.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ActualFile">[in_Config("DefaultDownloadPath").ToString+actualFileName]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExpectedFile">[expectedFileName]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,184.4" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteTestResult workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_41" UnSafe="False" WorkflowFileName="WriteTestResult.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TestCaseID">R_SAEX-007</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_exception">[exception.Message]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to create a secondary filter rules workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_44" UnSafe="False" WorkflowFileName="MAP_SAE\User is able to create a secondary filter rules.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_SecondaryFilterName">Trial</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="User is able to see BCI information.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_45" UnSafe="False" WorkflowFileName="MAP_SAE\User is able to see BCI information.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="user is able to see order history.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_46" UnSafe="False" WorkflowFileName="MAP_SAE\user is able to see order history.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="User is able to see data in summary panel.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_47" UnSafe="False" WorkflowFileName="MAP_SAE\User is able to see data in summary panel.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Logout User workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="LogoutUser.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadToSharepoint workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_65" UnSafe="False" WorkflowFileName="UploadToSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Sharepoint_TestResult">[in_Config("UploadFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_FileName">[expectedFileName]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <Sequence x:Key="TOQ" sap:VirtualizedContainerService.HintSize="499.6,1485.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="pwdDt" />
+          <Variable x:TypeArguments="sd:DataRow" Name="testDataRow" />
+          <Variable x:TypeArguments="sd:DataRow" Name="pwdRow" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Downloading File From Sharepoint workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_49" UnSafe="False" WorkflowFileName="DownloadingFromSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SharepointURL">[in_Config("DownloadInputFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFileTemplate">[in_Config("TOQInputTemplateName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InputfileName">[expectedFileName]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTestData workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_50" UnSafe="False" WorkflowFileName="GetTestData.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_inputFileName">[expectedFileName]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_testDataRow">[testDataRow]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="pwdDt">[pwdDt]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_pwdRow">[pwdRow]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to login workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_60" UnSafe="False" WorkflowFileName="MAP_TOQ\User is able to login.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_MAP_URL">[in_Config("MAPURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Username">[pwdRow.Item(1).ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Password">[pwdRow.Item(2).ToString]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NavigateToDashboard workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_61" UnSafe="False" WorkflowFileName="NavigateToDashboard.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_dashboardName">TOQ Report</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SaveFilter (1) workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_59" UnSafe="False" WorkflowFileName="MAP_TOQ\SaveFilter.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_UserFilter">[in_Config("FilterName").ToString]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="437.6,301.2" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="actualFileName" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnteringFieldParameters workflow" sap:VirtualizedContainerService.HintSize="334,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_56" UnSafe="False" WorkflowFileName="MAP_TOQ\EnteringFieldParameters.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_startDate">[testDataRow.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndDate">[testDataRow.Item(2).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartTime">[testDataRow.Item(3).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_security">[testDataRow.Item(5).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EventType">[testDataRow.Item(6).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Event">[testDataRow.Item(7).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_breg_id">[testDataRow.Item(8).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_mkt">[testDataRow.Item(15).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bpo">[testDataRow.Item(17).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_spo">[testDataRow.Item(18).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sRegID">[testDataRow.Item(9).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ban">[testDataRow.Item(23).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_san">[testDataRow.Item(24).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bActivePassive">[testDataRow.Item(21).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sActivepassive">[testDataRow.Item(22).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bTerms">[testDataRow.Item(19).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sTerms">[testDataRow.Item(20).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bCustomer_lei">[testDataRow.Item(31).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bCustomer_Account">[testDataRow.Item(27).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bAlgoid">[testDataRow.Item(29).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sUserID">[testDataRow.Item(11).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bAccountID">[testDataRow.Item(12).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sAccountID">[testDataRow.Item(13).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sCustomer_lei">[testDataRow.Item(32).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sCustomer_Account">[testDataRow.Item(28).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sAlgoid">[testDataRow.Item(30).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CUSIP">[testDataRow.Item(14).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_PlusMinusAll">[testDataRow.Item(25).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_buySellName">[testDataRow.Item(26).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bUser_ID">[testDataRow.Item(10).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ListingMKT">[testDataRow.Item(16).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndTime">[testDataRow.Item(4).ToString]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.4" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,205.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadReport workflow" sap:VirtualizedContainerService.HintSize="334,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_68" UnSafe="False" WorkflowFileName="DownloadReport.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_DashboradName">[in_TransactionItem.Item(1).ToString]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="User is able to run report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_54" UnSafe="False" WorkflowFileName="MAP_TOQ\User is able to run report.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Data Comparison workflow" sap:VirtualizedContainerService.HintSize="334,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_55" UnSafe="False" WorkflowFileName="MAP_TOQ\Data Comparison.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ActualFile">[in_Config("DefaultDownloadPath").ToString+actualFileName]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExpectedFile">[expectedFileName]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.6,22.8" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteTestResult workflow" sap:VirtualizedContainerService.HintSize="334,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_57" UnSafe="False" WorkflowFileName="WriteTestResult.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TestCaseID">R_TOQU-007</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_exception">[exception.Message]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Logout User workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_58" UnSafe="False" WorkflowFileName="LogoutUser.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadToSharepoint workflow" sap:VirtualizedContainerService.HintSize="437.6,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_66" UnSafe="False" WorkflowFileName="UploadToSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Sharepoint_TestResult">[in_Config("UploadFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_FileName">[expectedFileName]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <Sequence x:Key="SPVS" sap:VirtualizedContainerService.HintSize="496,1540" sap2010:WorkflowViewState.IdRef="Sequence_22">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataRow" Name="pwdRow" />
+          <Variable x:TypeArguments="sd:DataTable" Name="pwdDt" />
+          <Variable x:TypeArguments="sd:DataRow" Name="testDataRow" />
+          <Variable x:TypeArguments="x:String" Name="actualFileName" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadingFromSharepoint workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_69" UnSafe="False" WorkflowFileName="DownloadingFromSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SharepointURL">[in_Config("DownloadInputFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFileTemplate">[in_Config("SPVSInputTemplateName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InputfileName">[expectedFileName]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTestData workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_70" UnSafe="False" WorkflowFileName="GetTestData.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_inputFileName">[expectedFileName]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_testDataRow">[testDataRow]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="pwdDt">[pwdDt]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_pwdRow">[pwdRow]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to login workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_71" UnSafe="False" WorkflowFileName="SPVS\User is able to login.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_MAP_URL">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;MAPURL&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Username">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="pwdRow.Item(1).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Password">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="pwdRow.Item(2).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+              <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NavigateToDashboard workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_72" UnSafe="False" WorkflowFileName="NavigateToDashboard.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_dashboardName">SPVS Report</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SaveFilter workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_73" UnSafe="False" WorkflowFileName="SPVS\SaveFilter.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_UserFilter">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FilterName&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+              <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,350.8" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence sap:VirtualizedContainerService.HintSize="400,626.4" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnteringFieldParameters workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_74" UnSafe="False" WorkflowFileName="SPVS\EnteringFieldParameters.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_startDate">[testDataRow.Item(1).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndDate">[testDataRow.Item(2).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_security">[testDataRow.Item(3).ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_mkt">[testDataRow.Item(4).ToString]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to run report workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_75" UnSafe="False" WorkflowFileName="SPVS\User is able to run report.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53.2" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,225.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadReport workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_76" UnSafe="False" WorkflowFileName="DownloadReport.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName" />
+                        <InArgument x:TypeArguments="x:String" x:Key="in_DashboradName" />
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Data Comparison workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_77" UnSafe="False" WorkflowFileName="SPVS\Data Comparison.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ActualFile">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DefaultDownloadPath&quot;).Tostring+actualFileName" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExpectedFile">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="expectedFileName" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,184.4" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteTestResult workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_78" UnSafe="False" WorkflowFileName="WriteTestResult.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TestCaseID">
+                      <Literal x:TypeArguments="x:String">R_SPVS-002</Literal>
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_exception" />
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                      <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogoutUser workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_79" UnSafe="False" WorkflowFileName="LogoutUser.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadToSharepoint workflow" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_80" UnSafe="False" WorkflowFileName="UploadToSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Sharepoint_TestResult">[in_Config("UploadFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_FileName">[expectedFileName]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <Sequence x:Key="OBE" sap:VirtualizedContainerService.HintSize="499.6,1955.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataRow" Name="pwdRow" />
+          <Variable x:TypeArguments="sd:DataTable" Name="pwdDt" />
+          <Variable x:TypeArguments="sd:DataRow" Name="testDataRow" />
+          <Variable x:TypeArguments="x:String" Name="actualFileName" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadingFromSharepoint workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_81" UnSafe="False" WorkflowFileName="DownloadingFromSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SharepointURL">[in_Config("DownloadInputFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFileTemplate">[in_Config("OBEInputTemplateName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InputfileName">[expectedFileName]</OutArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTestData workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_82" UnSafe="False" WorkflowFileName="GetTestData.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_inputFileName">[expectedFileName]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_testDataRow">[testDataRow]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="pwdDt">[pwdDt]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_pwdRow">[pwdRow]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to login workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_83" UnSafe="False" WorkflowFileName="OBE\User is able to login.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_MAP_URL">[in_Config("MAPURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Username">[pwdRow.Item(1).ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Password">[pwdRow.Item(2).ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NavigateToDashboard workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_84" UnSafe="False" WorkflowFileName="NavigateToDashboard.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_dashboardName">Order Book Explorer</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SaveFilter workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_85" UnSafe="False" WorkflowFileName="OBE\SaveFilter.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_UserFilter">[in_Config("FilterName").ToString]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="437.6,766.4" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence sap:VirtualizedContainerService.HintSize="400,533.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnteringFieldParameters workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_86" UnSafe="False" WorkflowFileName="OBE\EnteringFieldParameters.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_startDate">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(2).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartTime">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(3).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_security">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(1).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_breg_id">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(13).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_mkt">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(6).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bpo">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(7).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_spo">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(8).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bdealerlei">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(23).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sdealerlei">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(24).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sRegID">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(14).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bCustomer_lei">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(21).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bCustomer_Account">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(17).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bAlgoid">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(19).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sUserID">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(10).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bAccountID">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(11).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sAccountID">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(12).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sCustomer_lei">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(22).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sCustomer_Account">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(18).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_sAlgoid">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(20).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_bUser_ID">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(9).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_terms">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(15).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OrderFlags">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(16).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_MarketStatus">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(5).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_EndTime">
+                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="testDataRow.Item(4).ToString" />
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke User is able to run report workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_87" UnSafe="False" WorkflowFileName="OBE\User is able to run report.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_str_FileName">[actualFileName]</OutArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Data Comparison workflow" sap:VirtualizedContainerService.HintSize="338,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_88" UnSafe="False" WorkflowFileName="OBE\Data Comparison.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ActualFile">[in_Config("DefaultDownloadPath").ToString+actualFileName]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExpectedFile">[expectedFileName]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.6,22.8" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteTestResult workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_89" UnSafe="False" WorkflowFileName="WriteTestResult.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_TestCaseID">R_OBEX-002</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_exception">[exception.Message]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogoutUser workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_90" UnSafe="False" WorkflowFileName="LogoutUser.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadToSharepoint workflow" sap:VirtualizedContainerService.HintSize="437.6,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_91" UnSafe="False" WorkflowFileName="UploadToSharepoint.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Sharepoint_TestResult">[in_Config("UploadFileURL").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_FileName">[expectedFileName]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+    </Switch>
+  </Sequence>
+</Activity>
